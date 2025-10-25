@@ -1,0 +1,1930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Portfolio</title>
+    <style>
+        @font-face {
+            font-family: 'FKGroteskNeue';
+            src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2') format('woff2');
+        }
+
+        :root {
+            /* Gulf/Arabian Inspired Color Palette */
+            --color-pearl-white: rgba(248, 246, 240, 1);
+            --color-sand-cream: rgba(245, 238, 220, 1);
+            --color-desert-gold: rgba(220, 151, 80, 1);
+            --color-deep-gold: rgba(197, 134, 63, 1);
+            --color-rich-brown: rgba(101, 67, 33, 1);
+            --color-midnight-blue: rgba(30, 38, 64, 1);
+            --color-charcoal: rgba(35, 31, 32, 1);
+            --color-deep-charcoal: rgba(28, 25, 26, 1);
+            --color-arabian-navy: rgba(25, 35, 45, 1);
+            --color-gulf-blue: rgba(65, 105, 145, 1);
+            --color-emerald: rgba(46, 125, 50, 1);
+            --color-deep-emerald: rgba(27, 94, 32, 1);
+            --color-desert-gold-rgb: 220, 151, 80;
+            --color-gulf-blue-rgb: 65, 105, 145;
+            --color-gray-400-rgb: 119, 124, 124;
+            
+            --color-background: var(--color-pearl-white);
+            --color-surface: var(--color-sand-cream);
+            --color-text: var(--color-arabian-navy);
+            --color-text-secondary: var(--color-midnight-blue);
+            --color-primary: var(--color-desert-gold);
+            --color-primary-hover: var(--color-deep-gold);
+            --color-border: rgba(var(--color-desert-gold-rgb), 0.3);
+            --color-card-border: rgba(var(--color-desert-gold-rgb), 0.15);
+            
+            --font-family-base: "FKGroteskNeue", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+            --radius-base: 8px;
+            --radius-lg: 12px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-background: var(--color-charcoal);
+                --color-surface: var(--color-deep-charcoal);
+                --color-text: var(--color-sand-cream);
+                --color-text-secondary: rgba(220, 151, 80, 0.8);
+                --color-primary: var(--color-gulf-blue);
+                --color-border: rgba(var(--color-gulf-blue-rgb), 0.4);
+                --color-card-border: rgba(var(--color-gulf-blue-rgb), 0.2);
+                --color-gray-300-rgb: 167, 169, 169;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family-base);
+            background-color: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            padding: 24px 0;
+            position: sticky;
+            top: 0;
+            background-color: var(--color-background);
+            border-bottom: 1px solid var(--color-border);
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--color-text);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 140px 0 100px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--color-background) 0%, rgba(var(--color-teal-500-rgb), 0.05) 100%);
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, var(--color-text), var(--color-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subtitle {
+            font-size: 28px;
+            color: var(--color-primary);
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--color-text-secondary);
+            max-width: 700px;
+            margin: 0 auto 50px;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-teal-600));
+            color: var(--color-cream-50);
+            box-shadow: 0 4px 15px rgba(var(--color-teal-500-rgb), 0.4);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--color-primary-hover), var(--color-teal-500));
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(var(--color-teal-500-rgb), 0.5);
+        }
+
+        .btn-secondary {
+            background: var(--color-surface);
+            color: var(--color-text);
+            border: 2px solid var(--color-primary);
+            box-shadow: 0 4px 15px rgba(var(--color-teal-500-rgb), 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-primary);
+            color: var(--color-cream-50);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(var(--color-teal-500-rgb), 0.4);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 60px;
+            text-align: center;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, var(--color-text), var(--color-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-teal-300));
+            margin: 20px auto 0;
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            background: var(--color-surface);
+            padding: 60px;
+            border-radius: 20px;
+            border: 1px solid var(--color-card-border);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .about-text h3 {
+            font-size: 32px;
+            margin-bottom: 24px;
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        .about-text p {
+            color: var(--color-text-secondary);
+            margin-bottom: 28px;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .skill-tag {
+            background: var(--color-surface);
+            border: 1px solid var(--color-card-border);
+            padding: 12px 16px;
+            border-radius: var(--radius-base);
+            font-size: 14px;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .project-card {
+            background: var(--color-surface);
+            border: 2px solid var(--color-card-border);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-teal-300));
+            transform: scaleX(0);
+            transition: transform 0.6s ease;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 10px 30px rgba(var(--color-teal-500-rgb), 0.2);
+            transform: translateY(-8px);
+            border-color: var(--color-primary);
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--color-primary);
+            border-radius: var(--radius-base);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            font-size: 24px;
+        }
+
+        .project-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .project-card p {
+            color: var(--color-text-secondary);
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: rgba(var(--color-teal-500-rgb), 0.1);
+            color: var(--color-primary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-base);
+            background: var(--color-surface);
+            color: var(--color-text);
+            font-family: var(--font-family-base);
+            font-size: 14px;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-message {
+            margin-top: 16px;
+            padding: 12px;
+            border-radius: var(--radius-base);
+            font-size: 14px;
+            text-align: center;
+            display: none;
+        }
+
+        .form-message.success {
+            background: rgba(var(--color-teal-500-rgb), 0.1);
+            color: var(--color-primary);
+            border: 1px solid var(--color-primary);
+        }
+
+        .form-message.error {
+            background: rgba(192, 21, 47, 0.1);
+            color: #c0152f;
+            border: 1px solid #c0152f;
+        }
+
+        /* Footer */
+        footer {
+            padding: 48px 0;
+            border-top: 1px solid var(--color-border);
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .social-links a {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .social-links a:hover {
+            color: var(--color-primary);
+        }
+
+        footer p {
+            color: var(--color-text-secondary);
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero .subtitle {
+                font-size: 20px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 16px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        /* Floating Particles Background */
+        .particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--color-primary);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 6s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
+            50% { transform: translateY(-100px) rotate(180deg); opacity: 0.1; }
+        }
+
+        /* Typing Animation */
+        .typing-text {
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 3s steps(30, end);
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-cursor {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--color-primary); }
+        }
+
+        /* Mechanical Floating Navigation - Meshed Gears */
+        .floating-nav {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+        }
+
+        .floating-nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            background: var(--color-surface);
+            border: 2px solid var(--color-border);
+            border-radius: 25px;
+            padding: 15px 12px;
+            box-shadow: var(--shadow-md);
+            position: relative;
+        }
+
+        .floating-nav li {
+            margin: 8px 0;
+            position: relative;
+        }
+
+        .floating-nav a {
+            display: block;
+            width: 32px;
+            height: 32px;
+            position: relative;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .floating-nav a::before {
+            content: '⚙️';
+            position: absolute;
+            font-size: 28px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(var(--gear-rotation, 0deg));
+            transition: all 0.8s ease;
+            filter: grayscale(0.7) brightness(0.6);
+            color: var(--color-text-secondary);
+        }
+
+        .floating-nav a.active::before {
+            filter: grayscale(0) brightness(1.2);
+            color: var(--color-primary);
+            text-shadow: 0 0 15px rgba(var(--color-teal-500-rgb), 0.8);
+        }
+
+        .floating-nav a.approaching::before {
+            filter: grayscale(0.3) brightness(0.9);
+            color: var(--color-teal-300);
+            text-shadow: 0 0 8px rgba(var(--color-teal-500-rgb), 0.4);
+        }
+
+        .floating-nav a:hover::before {
+            filter: grayscale(0);
+            color: var(--color-primary);
+            text-shadow: 0 0 10px rgba(var(--color-teal-500-rgb), 0.5);
+        }
+
+        .floating-nav a:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--color-surface);
+            color: var(--color-text);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            white-space: nowrap;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--color-border);
+            font-weight: 500;
+            z-index: 10;
+        }
+
+        /* Meshed Gear Connection Lines */
+        .floating-nav li:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -8px;
+            width: 2px;
+            height: 8px;
+            background: linear-gradient(to bottom, var(--color-border), transparent);
+            transform: translateX(-50%);
+        }
+
+        /* Scroll-based rotation animation */
+        .gear-rotate {
+            animation: none;
+            transform-origin: center;
+            transition: transform 0.1s ease-out;
+        }
+
+        @keyframes gear-mesh-rotation {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Alternate rotation for meshed effect */
+        .floating-nav li:nth-child(odd) .gear-rotate {
+            animation-direction: normal;
+        }
+
+        .floating-nav li:nth-child(even) .gear-rotate {
+            animation-direction: reverse;
+        }
+
+        /* Animated Counter */
+        .counter {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--color-primary);
+            display: block;
+        }
+
+        .counter-label {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Glitch Text Effect */
+        .glitch {
+            position: relative;
+            display: inline-block;
+        }
+
+        .glitch:hover::before,
+        .glitch:hover::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch:hover::before {
+            animation: glitch-1 0.3s infinite;
+            color: #ff0000;
+            z-index: -1;
+        }
+
+        .glitch:hover::after {
+            animation: glitch-2 0.3s infinite;
+            color: #00ffff;
+            z-index: -2;
+        }
+
+        @keyframes glitch-1 {
+            0% { transform: none; }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: none; }
+        }
+
+        @keyframes glitch-2 {
+            0% { transform: none; }
+            20% { transform: translate(2px, -2px); }
+            40% { transform: translate(2px, 2px); }
+            60% { transform: translate(-2px, -2px); }
+            80% { transform: translate(-2px, 2px); }
+            100% { transform: none; }
+        }
+
+        /* Dark/Light Mode Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 50px;
+            padding: 8px;
+            cursor: pointer;
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .theme-icon {
+            font-size: 16px;
+            padding: 4px;
+        }
+
+        /* Skills Progress Bars */
+        .skill-item {
+            background: var(--color-surface);
+            border: 1px solid var(--color-card-border);
+            padding: 16px;
+            border-radius: var(--radius-base);
+            margin-bottom: 16px;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .skill-name {
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .skill-percentage {
+            font-size: 12px;
+            color: var(--color-text-secondary);
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(var(--color-brown-600-rgb), 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-teal-300));
+            border-radius: 3px;
+            width: 0;
+            transition: width 2s ease-out;
+        }
+
+        /* Achievements Section */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin: 48px 0;
+        }
+
+        .achievement-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-card-border);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .achievement-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .achievement-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .achievement-desc {
+            font-size: 12px;
+            color: var(--color-text-secondary);
+        }
+
+        /* Statistics Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 32px;
+            text-align: center;
+            margin: 48px 0;
+        }
+
+        .stat-item {
+            padding: 24px;
+        }
+
+        /* Downloadable Resume Button */
+        .resume-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-teal-300));
+            color: var(--color-cream-50);
+            padding: 12px 24px;
+            border-radius: var(--radius-base);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-top: 24px;
+        }
+
+        .resume-download:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .resume-download::before {
+            content: "📄";
+            font-size: 16px;
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--color-background);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(var(--color-teal-500-rgb), 0.3);
+            border-top: 3px solid var(--color-primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .loading-text {
+            margin-top: 20px;
+            font-size: 18px;
+            color: var(--color-text);
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Magnetic Buttons */
+        .magnetic {
+            transition: transform 0.2s ease;
+        }
+
+        /* Project Modal Styles */
+        .project-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .project-modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--color-surface);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 90vw;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            border: 2px solid var(--color-card-border);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--color-primary-hover);
+            transform: scale(1.1);
+        }
+
+        .modal-project-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--color-primary);
+        }
+
+        .modal-project-description {
+            font-size: 18px;
+            line-height: 1.6;
+            color: var(--color-text-secondary);
+            margin-bottom: 30px;
+        }
+
+        .sketchfab-container {
+            width: 100%;
+            height: 500px;
+            margin: 30px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid var(--color-card-border);
+        }
+
+        .sketchfab-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .project-details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .detail-item {
+            background: var(--color-background);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--color-card-border);
+        }
+
+        .detail-title {
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .detail-value {
+            color: var(--color-text);
+            font-size: 16px;
+        }
+
+        .image-gallery {
+            margin: 30px 0;
+        }
+
+        .gallery-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--color-text);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            border: 2px solid var(--color-card-border);
+        }
+
+        .gallery-image:hover {
+            transform: scale(1.05);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .floating-nav {
+                display: none;
+            }
+            
+            .theme-toggle {
+                top: 10px;
+                right: 10px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .modal-content {
+                max-width: 95vw;
+                max-height: 95vh;
+                padding: 20px;
+            }
+
+            .sketchfab-container {
+                height: 300px;
+            }
+
+            .modal-project-title {
+                font-size: 24px;
+            }
+
+            .project-details-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Custom Cursor Glow */
+        .custom-cursor {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--color-primary) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            opacity: 0.5;
+            mix-blend-mode: screen;
+            filter: blur(8px);
+        }
+
+        .custom-cursor.hover {
+            transform: scale(1.5);
+            opacity: 0.7;
+            filter: blur(12px);
+        }
+
+        /* Ripple Effect */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(var(--color-teal-500-rgb), 0.4);
+            transform: scale(0);
+            animation: ripple-animation 0.6s ease-out;
+            pointer-events: none;
+        }
+
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        .ripple-container {
+            position: relative;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader"></div>
+        <div class="loading-text">Loading Portfolio...</div>
+    </div>
+    
+    <div class="particles-container" id="particlesContainer"></div>
+    <div class="custom-cursor"></div>
+    
+    <div class="theme-toggle" id="themeToggle">
+        <span class="theme-icon">🌙</span>
+    </div>
+    
+    <div class="floating-nav" id="floatingNav">
+        <ul>
+            <li><a href="#hero" data-tooltip="Home" class="active"></a></li>
+            <li><a href="#about" data-tooltip="About"></a></li>
+            <li><a href="#projects" data-tooltip="Projects"></a></li>
+            <li><a href="#contact" data-tooltip="Contact"></a></li>
+        </ul>
+    </div>
+    
+    <header>
+        <nav class="container">
+            <a href="#" class="logo glitch" data-text="Mohammed Shoeb Nawaz Khan">Mohammed Shoeb Nawaz Khan</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <div class="container fade-in">
+                <h1 class="typing-text">Hi, I'm Mohammed Shoeb Nawaz Khan</h1>
+                <p class="subtitle">PDMS Specialist | Oil & Gas Plant Designer</p>
+                <p>Experienced mechanical engineer specializing in PDMS (Plant Design Management System) for oil & gas, petrochemical, and power generation industries. Skilled in 3D plant modeling, piping design, equipment layout, and clash detection using PDMS, CAESAR II, AutoCAD, and ANSYS.</p>
+                <div class="cta-buttons">
+                    <a href="#projects" class="btn btn-primary magnetic">View My Work</a>
+                    <a href="#contact" class="btn btn-secondary magnetic">Get In Touch</a>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="counter" data-target="[NUMBER OF PROJECTS]">0</span>
+                        <div class="counter-label">Projects Completed</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="counter" data-target="[CERTIFICATIONS COUNT]">0</span>
+                        <div class="counter-label">Certifications</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="counter" id="visitorCount">0</span>
+                        <div class="counter-label">👁️ Portfolio Views</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-content">                <div class="about-text">
+                    <h3>PDMS Plant Design Specialist</h3>
+                    <p>I'm a mechanical engineering professional specializing in PDMS software for oil & gas plant design and engineering. My expertise includes 3D plant modeling, piping systems design, equipment layout optimization, and multi-disciplinary project coordination for petrochemical facilities.</p>
+                    <p>Seeking opportunities in Gulf countries (UAE, Saudi Arabia, Qatar, Kuwait) to contribute to major oil & gas projects using cutting-edge PDMS technology and internationally recognized design standards.</p>
+                    
+                    <a href="#" class="resume-download" onclick="downloadResume()">Download Resume</a>
+                </div>
+                <div class="skills-container">
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">PDMS (Plant Design Management System)</span>
+                            <span class="skill-percentage">[YOUR PROFICIENCY %]</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="[YOUR PROFICIENCY NUMBER]"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">AVEVA E3D / PDMS Administration</span>
+                            <span class="skill-percentage">[YOUR PROFICIENCY %]</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="[YOUR PROFICIENCY NUMBER]"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">CAESAR II (Pipe Stress Analysis)</span>
+                            <span class="skill-percentage">[YOUR PROFICIENCY %]</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="[YOUR PROFICIENCY NUMBER]"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">AutoCAD Plant 3D / 2D</span>
+                            <span class="skill-percentage">[YOUR PROFICIENCY %]</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="[YOUR PROFICIENCY NUMBER]"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">ANSYS (FEA for Oil & Gas Equipment)</span>
+                            <span class="skill-percentage">[YOUR PROFICIENCY %]</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="[YOUR PROFICIENCY NUMBER]"></div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card" onclick="openProjectModal('hydraulic-arm')">
+                        <div class="project-icon">🦾</div>
+                        <h3>Hydraulic Arm Assembly</h3>
+                        <p>Complete 3D CATIA model of hydraulic arm assembly with detailed mechanical components, joints, and actuators. Interactive 3D visualization available.</p>
+                        <div class="project-tags">
+                            <span class="tag">CATIA V5</span>
+                            <span class="tag">3D Modeling</span>
+                            <span class="tag">Mechanical Design</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-icon">⚡</div>
+                        <h3>[YOUR PROJECT 2 - e.g., Petrochemical Piping Design]</h3>
+                        <p>[DESCRIBE YOUR PROJECT - e.g., PDMS piping design with clash detection for petrochemical processing unit]</p>
+                        <div class="project-tags">
+                            <span class="tag">PDMS</span>
+                            <span class="tag">Piping</span>
+                            <span class="tag">Clash Detection</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-icon">🔧</div>
+                        <h3>[YOUR PROJECT 3 - e.g., High-Pressure Piping Stress Analysis]</h3>
+                        <p>[DESCRIBE YOUR PROJECT - e.g., CAESAR II stress analysis for high-pressure steam and process piping systems]</p>
+                        <div class="project-tags">
+                            <span class="tag">CAESAR II</span>
+                            <span class="tag">Stress Analysis</span>
+                            <span class="tag">High Pressure</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-icon">🏗️</div>
+                        <h3>[YOUR PROJECT 4 - e.g., LNG Terminal Equipment Layout]</h3>
+                        <p>[DESCRIBE YOUR PROJECT - e.g., PDMS equipment modeling and layout optimization for LNG terminal facility]</p>
+                        <div class="project-tags">
+                            <span class="tag">PDMS</span>
+                            <span class="tag">LNG</span>
+                            <span class="tag">Equipment Layout</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-icon">📏</div>
+                        <h3>[YOUR PROJECT 5 - e.g., P&ID to 3D Model Conversion]</h3>
+                        <p>[DESCRIBE YOUR PROJECT - e.g., Converting 2D P&IDs to detailed 3D PDMS models with accurate routing]</p>
+                        <div class="project-tags">
+                            <span class="tag">PDMS</span>
+                            <span class="tag">P&ID</span>
+                            <span class="tag">3D Modeling</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-icon">🌡️</div>
+                        <h3>[YOUR PROJECT 6 - e.g., Power Plant HVAC Design]</h3>
+                        <p>[DESCRIBE YOUR PROJECT - e.g., PDMS-based HVAC system design and CFD analysis for power generation facility]</p>
+                        <div class="project-tags">
+                            <span class="tag">PDMS</span>
+                            <span class="tag">HVAC</span>
+                            <span class="tag">Power Plant</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="achievements">
+            <div class="container">
+                <h2 class="section-title">Achievements & Certifications</h2>
+                <div class="achievements-grid">
+                    <div class="achievement-card">
+                        <span class="achievement-icon">🎓</span>
+                        <div class="achievement-title">[YOUR DEGREE - e.g., B.Tech Mechanical Engineering]</div>
+                        <div class="achievement-desc">[YOUR UNIVERSITY/COLLEGE]</div>
+                    </div>
+                    <div class="achievement-card">
+                        <span class="achievement-icon">🏭</span>
+                        <div class="achievement-title">PDMS Professional Certification</div>
+                        <div class="achievement-desc">[ADD WHEN OBTAINED - AVEVA/PDMS Training]</div>
+                    </div>
+                    <div class="achievement-card">
+                        <span class="achievement-icon">⚡</span>
+                        <div class="achievement-title">Oil & Gas Industry Training</div>
+                        <div class="achievement-desc">[SAFETY, PROCESS, OR INDUSTRY-SPECIFIC]</div>
+                    </div>
+                    <div class="achievement-card">
+                        <span class="achievement-icon">🏆</span>
+                        <div class="achievement-title">[YOUR ACHIEVEMENT - e.g., Design Competition Winner]</div>
+                        <div class="achievement-desc">[DESCRIPTION]</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="contact-content">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                        <div id="formMessage" class="form-message"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Project Modals -->
+    <div id="project-modal" class="project-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeProjectModal()">&times;</button>
+            <div id="modal-project-content">
+                <!-- Content will be dynamically loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://github.com/[YOUR-GITHUB-USERNAME]" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://linkedin.com/in/[YOUR-LINKEDIN-USERNAME]" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://twitter.com/[YOUR-TWITTER-USERNAME]" target="_blank" rel="noopener noreferrer">Twitter</a>
+                <a href="mailto:[YOUR-EMAIL@example.com]">Email</a>
+            </div>
+            <p>&copy; 2025 Mohammed Shoeb Nawaz Khan. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission handler
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // Validate
+            if (!name || !email || !message) {
+                showMessage('Please fill in all fields.', 'error');
+                return;
+            }
+
+            if (!isValidEmail(email)) {
+                showMessage('Please enter a valid email address.', 'error');
+                return;
+            }
+
+            // Simulate form submission (replace with actual submission logic)
+            showMessage('Thank you for your message! I\'ll get back to you soon.', 'success');
+            contactForm.reset();
+        });
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function showMessage(text, type) {
+            formMessage.textContent = text;
+            formMessage.className = 'form-message ' + type;
+            formMessage.style.display = 'block';
+            
+            setTimeout(() => {
+                formMessage.style.display = 'none';
+            }, 5000);
+        }
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Custom glowing cursor
+        const cursor = document.querySelector('.custom-cursor');
+        let mouseX = 0;
+        let mouseY = 0;
+        let cursorX = 0;
+        let cursorY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateCursor() {
+            const dx = mouseX - cursorX;
+            const dy = mouseY - cursorY;
+            
+            cursorX += dx * 0.15;
+            cursorY += dy * 0.15;
+            
+            cursor.style.left = cursorX - 10 + 'px';
+            cursor.style.top = cursorY - 10 + 'px';
+            
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // Cursor hover effect
+        const hoverElements = document.querySelectorAll('a, button, .project-card, input, textarea');
+        hoverElements.forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                cursor.classList.add('hover');
+            });
+            element.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hover');
+            });
+        });
+
+        // Ripple effect function
+        function createRipple(event) {
+            const element = event.currentTarget;
+            
+            // Add ripple container class if not present
+            if (!element.classList.contains('ripple-container')) {
+                element.classList.add('ripple-container');
+            }
+
+            const ripple = document.createElement('span');
+            ripple.classList.add('ripple');
+
+            const rect = element.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = event.clientX - rect.left - size / 2;
+            const y = event.clientY - rect.top - size / 2;
+
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+
+            element.appendChild(ripple);
+
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        }
+
+        // Add ripple effect to clickable elements
+        const rippleElements = document.querySelectorAll('a, button, .project-card, .skill-tag');
+        rippleElements.forEach(element => {
+            element.addEventListener('click', createRipple);
+        });
+
+        // Loading Screen
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loadingScreen').classList.add('hidden');
+            }, 2000);
+        });
+
+        // Floating Particles Background
+        function createParticles() {
+            const container = document.getElementById('particlesContainer');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.width = Math.random() * 4 + 2 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                container.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        // Floating Navigation Active State & Scroll-based Gear Rotation
+        const floatingNavLinks = document.querySelectorAll('.floating-nav a');
+        const sections = document.querySelectorAll('section');
+        let lastScrollY = window.scrollY;
+
+        function updateActiveNav() {
+            let current = '';
+            let approaching = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                const scrollPosition = window.pageYOffset + window.innerHeight / 2;
+                
+                // Check if section is active (currently viewing)
+                if (window.pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+                
+                // Check if approaching section (within 300px of entering viewport)
+                if (scrollPosition >= sectionTop - 300 && scrollPosition < sectionTop + sectionHeight + 300) {
+                    approaching = section.getAttribute('id');
+                }
+            });
+
+            floatingNavLinks.forEach(link => {
+                link.classList.remove('active', 'approaching');
+                const linkTarget = link.getAttribute('href').substring(1);
+                
+                if (linkTarget === current) {
+                    link.classList.add('active');
+                } else if (linkTarget === approaching) {
+                    link.classList.add('approaching');
+                }
+            });
+        }
+
+        function rotateGears() {
+            const currentScrollY = window.scrollY;
+            const scrollDiff = currentScrollY - lastScrollY;
+            const rotationAmount = scrollDiff * 0.5; // Adjust rotation speed
+            
+            floatingNavLinks.forEach((link, index) => {
+                const gear = link.querySelector('::before') || link;
+                const currentRotation = parseFloat(link.dataset.rotation || 0);
+                
+                // Alternate rotation direction for meshed effect
+                const newRotation = index % 2 === 0 ? 
+                    currentRotation + rotationAmount : 
+                    currentRotation - rotationAmount;
+                
+                link.dataset.rotation = newRotation;
+                link.style.setProperty('--gear-rotation', `${newRotation}deg`);
+            });
+            
+            lastScrollY = currentScrollY;
+        }
+
+        window.addEventListener('scroll', () => {
+            updateActiveNav();
+            rotateGears();
+        });
+
+        // Initialize gear rotation
+        floatingNavLinks.forEach(link => {
+            link.dataset.rotation = 0;
+        });
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('.theme-icon');
+        let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        themeToggle.addEventListener('click', () => {
+            isDarkMode = !isDarkMode;
+            document.documentElement.setAttribute('data-color-scheme', isDarkMode ? 'dark' : 'light');
+            themeIcon.textContent = isDarkMode ? '☀️' : '🌙';
+        });
+
+        // Initialize theme
+        if (isDarkMode) {
+            document.documentElement.setAttribute('data-color-scheme', 'dark');
+            themeIcon.textContent = '☀️';
+        }
+
+        // Animated Counters
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                // Skip visitor count as it has its own animation
+                if (counter.id === 'visitorCount') return;
+                
+                const target = parseInt(counter.getAttribute('data-target'));
+                if (isNaN(target) || target === 0) return; // Skip if no valid target
+                
+                const increment = target / 200;
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        counter.textContent = target;
+                        clearInterval(timer);
+                    } else {
+                        counter.textContent = Math.ceil(current);
+                    }
+                }, 10);
+            });
+        }
+
+        // Skills Progress Animation
+        function animateSkills() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            skillBars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                setTimeout(() => {
+                    bar.style.width = width + '%';
+                }, 500);
+            });
+        }
+
+        // Trigger animations on scroll and page load
+        const statsSection = document.querySelector('.stats-grid');
+        const skillsSection = document.querySelector('.skills-container');
+
+        const animateObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.classList.contains('stats-grid')) {
+                        animateCounters();
+                    } else if (entry.target.classList.contains('skills-container')) {
+                        animateSkills();
+                    }
+                    animateObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        if (statsSection) animateObserver.observe(statsSection);
+        if (skillsSection) animateObserver.observe(skillsSection);
+        
+        // Trigger counter animation immediately after loading screen
+        setTimeout(() => {
+            animateCounters();
+            animateSkills();
+        }, 2500);
+
+        // Magnetic Buttons Effect
+        const magneticElements = document.querySelectorAll('.magnetic');
+        magneticElements.forEach(element => {
+            element.addEventListener('mousemove', (e) => {
+                const rect = element.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                element.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                element.style.transform = 'translate(0, 0)';
+            });
+        });
+
+        // Resume Download Function
+        function downloadResume() {
+            // Create a mock resume download
+            const link = document.createElement('a');
+            link.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent('This is a placeholder for your resume. Replace this with your actual resume file.');
+            link.download = 'Mohammed-Shoeb-Nawaz-Khan-Resume.txt';
+            link.click();
+            
+            // Show success message
+            alert('Resume download started! (This is a demo - replace with your actual resume file)');
+        }
+
+        // Visitor Counter - Option 1: Free API Counter
+        async function updateVisitorCount() {
+            try {
+                // Using Count API - free visitor counter service
+                const namespace = 'portfolio-msn-khan'; // Unique namespace for your portfolio
+                const key = 'visitor-count';
+                const apiUrl = `https://api.countapi.xyz/hit/${namespace}/${key}`;
+                
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+                
+                if (data.value) {
+                    animateCounterTo('visitorCount', data.value);
+                }
+            } catch (error) {
+                console.log('Visitor counter unavailable');
+                // Fallback to local counter
+                updateLocalVisitorCount();
+            }
+        }
+
+        // Option 2: Local visitor counter (fallback)
+        function updateLocalVisitorCount() {
+            let visits = localStorage.getItem('portfolio_visits') || 0;
+            visits = parseInt(visits) + 1;
+            localStorage.setItem('portfolio_visits', visits);
+            
+            animateCounterTo('visitorCount', visits);
+        }
+
+        // Animate counter to specific value
+        function animateCounterTo(elementId, targetValue) {
+            const element = document.getElementById(elementId);
+            const increment = targetValue / 100;
+            let current = 0;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= targetValue) {
+                    element.textContent = targetValue;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.ceil(current);
+                }
+            }, 15);
+        }
+
+        // Initialize visitor counter on page load
+        updateVisitorCount();
+
+        // Project Modal Functions
+        const projectData = {
+            'hydraulic-arm': {
+                title: 'Hydraulic Arm Assembly',
+                description: 'Complete 3D mechanical design of a hydraulic arm assembly created in CATIA V5. This project demonstrates advanced 3D modeling techniques, assembly constraints, and mechanical component integration. The design includes detailed hydraulic cylinders, joints, brackets, and structural components with proper material specifications and engineering tolerances.',
+                sketchfabEmbed: `<div class="sketchfab-embed-wrapper">
+                    <iframe title="Hydraulic Arm Assembly" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/2ef46c2aa4484b73a50f1ca72d4c5ea0/embed" style="width: 100%; height: 100%;"></iframe>
+                </div>`,
+                details: {
+                    'Software Used': 'CATIA V5',
+                    'Project Type': '3D Mechanical Assembly',
+                    'Components': '25+ Parts',
+                    'File Format': 'CATProduct, CATPart',
+                    'Industry': 'Heavy Machinery',
+                    'Completion': '[ADD DATE]'
+                },
+                images: [
+                    // Add your project images here
+                    // 'path/to/image1.jpg',
+                    // 'path/to/image2.jpg'
+                ]
+            },
+            // Add more projects here as you create them
+            'project-2': {
+                title: '[YOUR PROJECT 2 - e.g., Petrochemical Piping Design]',
+                description: '[DESCRIBE YOUR PROJECT - e.g., PDMS piping design with clash detection for petrochemical processing unit]',
+                sketchfabEmbed: '<div style="padding: 40px; text-align: center; color: var(--color-text-secondary);">3D Model Coming Soon...<br>Upload your Sketchfab embed code here</div>',
+                details: {
+                    'Software Used': 'PDMS',
+                    'Project Type': 'Piping Design',
+                    'Industry': 'Petrochemical',
+                    'Status': 'Completed'
+                },
+                images: []
+            }
+        };
+
+        function openProjectModal(projectId) {
+            const modal = document.getElementById('project-modal');
+            const content = document.getElementById('modal-project-content');
+            const project = projectData[projectId];
+
+            if (!project) {
+                console.error('Project not found:', projectId);
+                return;
+            }
+
+            // Build modal content
+            content.innerHTML = `
+                <h2 class="modal-project-title">${project.title}</h2>
+                <p class="modal-project-description">${project.description}</p>
+                
+                <div class="sketchfab-container">
+                    ${project.sketchfabEmbed}
+                </div>
+                
+                <div class="project-details-grid">
+                    ${Object.entries(project.details).map(([key, value]) => `
+                        <div class="detail-item">
+                            <div class="detail-title">${key}</div>
+                            <div class="detail-value">${value}</div>
+                        </div>
+                    `).join('')}
+                </div>
+                
+                ${project.images.length > 0 ? `
+                    <div class="image-gallery">
+                        <h3 class="gallery-title">Project Images</h3>
+                        <div class="gallery-grid">
+                            ${project.images.map(img => `
+                                <img src="${img}" alt="${project.title}" class="gallery-image" onclick="openImageFullscreen('${img}')">
+                            `).join('')}
+                        </div>
+                    </div>
+                ` : ''}
+            `;
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProjectModal() {
+            const modal = document.getElementById('project-modal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function openImageFullscreen(imageSrc) {
+            // Create fullscreen image viewer
+            const fullscreenDiv = document.createElement('div');
+            fullscreenDiv.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.9);
+                z-index: 3000;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+            `;
+            
+            const img = document.createElement('img');
+            img.src = imageSrc;
+            img.style.maxWidth = '90%';
+            img.style.maxHeight = '90%';
+            img.style.objectFit = 'contain';
+            
+            fullscreenDiv.appendChild(img);
+            document.body.appendChild(fullscreenDiv);
+            
+            fullscreenDiv.onclick = () => {
+                document.body.removeChild(fullscreenDiv);
+            };
+        }
+
+        // Close modal when clicking outside content
+        document.getElementById('project-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeProjectModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeProjectModal();
+            }
+        });
+
+        // Update other project cards to be clickable (add onclick when you have more projects)
+        // Example: document.querySelector('.project-card:nth-child(2)').onclick = () => openProjectModal('project-2');
+    </script>
+</body>
+</html>
